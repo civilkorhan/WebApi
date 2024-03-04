@@ -1,4 +1,9 @@
 
+using Business.Abstract;
+using Business.Concretes;
+using DataAcces.Abstract;
+using DataAcces.Concretes;
+
 namespace WebApi
 {
     public class Program
@@ -13,7 +18,8 @@ namespace WebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddSingleton<IBrandService, BrandManager>();
+            builder.Services.AddSingleton<IBrandDal, BrandDal>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
